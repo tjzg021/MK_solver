@@ -84,32 +84,32 @@ def CheckResult(F, NightNum, TotalFamily, min_NightNum):
     return 0,min_NightNum
 
 
-
-TotalFamily = 30
-min_NightNum = 15
-Final = []
-for n in range(1,50000): 
-    F = []
-    ifcontinue = 1
-    #print("Iteration: %d\n" %n)
-    
-    for i in range(0,TotalFamily):
-        F.append( Family(i+1, TotalFamily) )
-        #F[i].FamilyID()
-        #F[i].GetNonAccess()
+if __name__ == "__main__":
+    TotalFamily = 30
+    min_NightNum = 15
+    Final = []
+    for n in range(1,50000): 
+        F = []
+        ifcontinue = 1
+        print("Iteration: %d\n" %n)
         
-    for NightNum in range(1, min_NightNum):
-        OneNight(F, NightNum, TotalFamily)
-        #print("night: %d\n" %NightNum)
-        ifcontinue,min_NightNum = CheckResult(F, NightNum, TotalFamily, min_NightNum)
-        #print("ifcontinue: %d\n" %ifcontinue)
-        if ifcontinue == 0:
-            Final = F
-            break
-if min_NightNum < 10:
-    print("Final Night Number %d \n" %(min_NightNum))
-    print("Final Access history:\n")
-    for i in range(0, TotalFamily):
-        Final[i].GetHistory()
+        for i in range(0,TotalFamily):
+            F.append( Family(i+1, TotalFamily) )
+            #F[i].FamilyID()
+            #F[i].GetNonAccess()
+            
+        for NightNum in range(1, min_NightNum):
+            OneNight(F, NightNum, TotalFamily)
+            #print("night: %d\n" %NightNum)
+            ifcontinue,min_NightNum = CheckResult(F, NightNum, TotalFamily, min_NightNum)
+            #print("ifcontinue: %d\n" %ifcontinue)
+            if ifcontinue == 0:
+                Final = F
+                break
+    if min_NightNum < 10:
+        print("Final Night Number %d \n" %(min_NightNum))
+        print("Final Access history:\n")
+        for i in range(0, TotalFamily):
+            Final[i].GetHistory()
     
     
