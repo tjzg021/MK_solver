@@ -51,8 +51,8 @@ def random_index(rate):
 def OneNight(F, NightNum, TotalFamily):
     AtHomeList = []
     for i in range(0, TotalFamily):
-        #F[i].AtHome = random.randint(0,1)
-        F[i].AtHome = random_index([80,10])
+        F[i].AtHome = random.randint(0,1)
+        #F[i].AtHome = random_index([30,70])
         if F[i].AtHome == 1:
             AtHomeList.append(F[i].Fid)
     #print("AtHomeList: \n", AtHomeList)
@@ -86,12 +86,13 @@ def CheckResult(F, NightNum, TotalFamily, min_NightNum):
 
 if __name__ == "__main__":
     TotalFamily = 30
-    min_NightNum = 15
+    min_NightNum = 10
     Final = []
-    for n in range(1,50000): 
+    for n in range(1,100000000): 
         F = []
         ifcontinue = 1
-        print("Iteration: %d\n" %n)
+        if n%100000 == 0:
+            print("Iteration: %d\n" %n)
         
         for i in range(0,TotalFamily):
             F.append( Family(i+1, TotalFamily) )
@@ -111,5 +112,7 @@ if __name__ == "__main__":
         print("Final Access history:\n")
         for i in range(0, TotalFamily):
             Final[i].GetHistory()
+    else:
+        print("Nothing found.\n")
     
     
